@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { useAppContext } from "@/Context/links"
-import { useSessionContext } from '@/context/user';
+import { useSessionContext } from '@/Context/user';
 import {useState,useEffect} from 'react'
 
 export default function LoggedIn({data}){

@@ -2,7 +2,7 @@ import Image from "next/image"
 import Button from 'react-bootstrap/Button';
 import Reel from '@/components/reel';
 import { List } from "@/components/list";
-import { useSessionContext } from '@/context/user';
+import { useSessionContext } from '@/Context/user';
 import {useEffect,useState } from 'react' 
 import Link from "next/link";
 import cookie from 'js-cookie'

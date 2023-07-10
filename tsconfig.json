@@ -19,6 +19,6 @@
     },
     "noImplicitAny" : false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "context/user.js", "middleware.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Context/user.js", "middleware.js"],
   "exclude": ["node_modules"]
 }

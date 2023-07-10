@@ -1,5 +1,5 @@
 import { useAppContext } from "@/Context/links"
-import { useSessionContext } from '@/context/user';
+import { useSessionContext } from '@/Context/user';
 import {useState,useEffect} from 'react'
 import Trailer from "./Trailer";
 import Image from "next/image"

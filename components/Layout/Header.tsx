@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useSessionContext } from '@/context/user';
+import { useSessionContext } from '@/Context/user';
 import cookie from 'js-cookie'
 import Image from 'next/image';
 import Container from 'react-bootstrap/Container';

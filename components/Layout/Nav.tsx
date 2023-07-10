@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Nav from 'react-bootstrap/Nav';
-import { useSessionContext} from '@/context/user';
+import { useSessionContext} from '@/Context/user';
 import {useEffect,useState  }  from 'react'
 
 export default function NavBar(){

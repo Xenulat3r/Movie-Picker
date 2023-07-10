@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
-import { useSessionContext } from '@/context/user';
+import { useSessionContext } from '@/Context/user';
 import {useState,useEffect} from 'react'
 export  const List = ({data})=>{
   const auth:string = process.env.auth !== undefined ? process.env.auth : ""

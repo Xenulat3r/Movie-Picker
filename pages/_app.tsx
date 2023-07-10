@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { UserProvider } from '@/context/user'
+import { UserProvider } from '@/Context/user'
 import { LinkProvider } from '@/Context/links'
 
 import MainLayout from '@/components/Layout/layout'
