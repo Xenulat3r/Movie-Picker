@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+@font-face {
+  font-family: Bebas;
+  src: url(./BebasNeue-Regular.ttf);
+}
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    font-size: 15px;
+    font-family: Bebas !important;
+}
+.avatar{
+  height:40px;
+  width:40px;
+  border-radius:100px;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.movies{
+  width:50%;
+  display: flex;
+  flex-direction: column;
+}
+.movie:hover{
+  border: 1px #0d6dfd14 solid;
+  background-color: #0d6dfd;
+  color:#fff;
+}
+
+.movie{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:5px;
+  padding:5px;
+  border: 1px #0d6efd solid;
+  background-color: #0d6dfd14;
+}
+.movie>h1{
+  font-size:1.2rem;
+  margin:0 auto;
+}
+ .filter{
+  margin:0 auto;
+  margin-bottom:50px;
+  width:75%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding:5px;
+  border: 1px #0d6efd solid;
+  background-color: #0d6dfd14;
+}
+.filter>Button{
+margin:5px;
+}
+
+.filterImg{
+  border-radius: 100px;
+  margin:0 auto;
+}
+
+.reelItem{
+margin-right:10px;
+margin-left:10px;
+width:100px;
+height:150px;
+}
+.reelText{
+  font-size: 1rem;
+}
+.filter{
+  width:100%;
+}
+.filter>h1{
+  width:100%;
+}
+
+.selectedMovie{
+background-size: cover;
+background-position: 50% 25%;
+width:100%;
+height:500px;
+}
+
+.movieInfoBackground{
+  position: relative;
+  width:100%;
+  height:100%;
+  background: linear-gradient(30deg, rgba(0,0,0,1) 15%, transparent);
+  color:rgba(255, 255, 255,.5);
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-end;
+}
+
+.movieInfoBackground>h1{
+  color:#fff;
+  position:absolute;
+  text-align:center;
+  top:15px;
+  width:100%;
+}
+.movieInfo>h2{
+font-size: 1rem;
+}
+
+.favMovies{
+  margin:0 auto;
+  margin-bottom:15px;
+  width:75%;
+}
+.favMovie{
+justify-content: baseline ;
+}
+
+.results{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.results > .movie{
+  width:25%;
+  flex-direction:column;
+}
+.results > h1{
+  width:100%;
+  display:block;
+
+}
+
+.filters{
+  width:50%;
+  margin:0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.clearButton{
+  width:100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem !important;
+  letter-spacing: 1rem;
+
+}
+.searchButton{
+  margin:0 auto!important;
+  margin-top:.5rem!important;
+  margin-bottom: .5rem!important;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  margin:5px;
+
+}
+
+h4{
+  width:100%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+h4>p{
+  font-size:1rem;
+  text-align:right;
+}
+.nav-link{
+  font-size:1.5rem !important;
+}
+@media (max-width:1000px) {
+  .filters{
+    width:75%;
+  }
+}
+
+
+@media (max-width:700px) {
+  .filters{
+    width:100%;
+  }
+
+}
