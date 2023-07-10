@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App({ Component, pageProps,}: AppProps) {
 
-  return (<>
+  return (
   
     <UserProvider>
       <LinkProvider>
@@ -21,7 +21,7 @@ export default function App({ Component, pageProps,}: AppProps) {
         
 
       </LinkProvider>
-    </UserProvider></>
+    </UserProvider>
   )
 }
 

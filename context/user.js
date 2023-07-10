@@ -133,18 +133,6 @@ await fetch(`https://api.themoviedb.org/3/list/${id}?language=en-US`, options)
     })
 }
 
-// async function loadLists(){
-  
-//   lists.map(list=> {
-//     listItems.length === 0 ? getListItems(list.id) :
-//    listItems.filter(item=>item.id === list.id).length === 0 && getListItems([...listItems],list.id) 
-//   })
-// }
-// useEffect(()=>{
-
-// getLists()
-// loadLists()
-// },[lists,listItems])
 
 function addToList(id,media_id){
   const options = {
