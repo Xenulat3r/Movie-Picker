@@ -18,6 +18,7 @@ getFavorites()
 getLists()
 setLoading(false)
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 },[loading,listItems,favorites])
 
 

@@ -17,6 +17,7 @@ export default function LoggedIn({data}){
             setLoading(false)
       
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[loading])
     return(
 <div className="buttons">

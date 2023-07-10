@@ -20,7 +20,7 @@ export default function DiscoverReel()  {
           context.changeMovie(id)
         setLoading(false); });
         console.log(context.movie)
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context.discoverLink]);
 
 

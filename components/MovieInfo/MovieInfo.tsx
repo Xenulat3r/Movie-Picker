@@ -38,7 +38,7 @@ export default function MovieInfo() {
             context.getTrailer(context.movie)   
 setLoading(false)
           });} 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
       }, [data,context.infoLink,context.movie]);
 
       useEffect(()=>{
@@ -47,6 +47,7 @@ setLoading(false)
             getLists()
   
           }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
       },[sessionId,context.movie,loading])
 
 if(context.movie == ""){
@@ -57,7 +58,7 @@ if(context.movie == ""){
 <div className="selectedMovie" style={{
          backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`
           }}>
-    {/* <Image className="movieImg" src={context.imgLink + data.backdrop_path}  alt={data.title} width={800} height={600}/> */}
+
 
 <div className="movieInfoBackground">    <h1>{data.title}</h1>
   <div className="movieInfo">

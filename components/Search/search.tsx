@@ -26,8 +26,8 @@ export default function Search() {
     const movieSearchLink = `${baseLink}search/movie?api_key=${API}&language=us-en&page=1&include_adult=false&query=${searchQuery}`
     const peopleSearchLink = `${baseLink}search/person?api_key=${API}&language=us-en&page=1&include_adult=false&query=${peopleQuery}`
     const [movies,setMovies] = useState(true)
-    const searchRef = useRef()
-
+    const searchRef = useRef<HTMLInputElement>(null);
+    
 
     useEffect(() => {
         fetch(discoverLink)
@@ -57,8 +57,8 @@ export default function Search() {
             
 <h2>{movies? 'Searching Movies' : 'Searching People'}</h2>
         {movies ? 
-                    <Button variant="outline-secondary" className='searchButton' onClick={()=>{setMovies(!movies);searchRef.current.focus();setQuery("search", '');}}>Search People?</Button>:
-                    <Button variant="outline-secondary" className='searchButton'  onClick={()=>{setMovies(!movies);searchRef.current.focus();setQuery("people", '');}}>Search Movies?</Button>}
+                    <Button variant="outline-secondary" className='searchButton' onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("search", '');}}>Search People?</Button>:
+                    <Button variant="outline-secondary" className='searchButton'  onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("people", '');}}>Search Movies?</Button>}
 <InputGroup >
 <InputGroup.Text>{movies? 'Searching Movies' : 'Searching People'}</InputGroup.Text>
         <Form.Control

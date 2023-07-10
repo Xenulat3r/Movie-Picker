@@ -22,13 +22,14 @@ export default function FilteredResults()  {
         }
 
         setLoading(false); });
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context.discoverLink]);
 
   useEffect(()=>{
             if(data.length > 0){
         context.changeMovie(data[0].id)
      }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[data])
 
 

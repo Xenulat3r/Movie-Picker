@@ -34,7 +34,7 @@ useEffect(()=>{
         setWatchProviders()
 
 }
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[movie])
 
 
