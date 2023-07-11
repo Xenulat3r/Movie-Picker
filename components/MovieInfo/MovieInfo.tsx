@@ -70,7 +70,7 @@ if(context.movie == ""){
         <Placeholder.Button variant="primary" xs={6} />
       </Card.Body>
     </Card>)
-}else if (context.movie !==""){
+}else{
   return (
     <div className="d-flex justify-content-around">      
  
@@ -122,49 +122,4 @@ if(context.movie == ""){
 
   </div>
   )
-}
-else{
-  return (
-<div className="selectedMovie" style={{
-         backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`
-          }}>
-
-
-<div className="movieInfoBackground">    <h1>{data.title}</h1>
-  <div className="movieInfo">
-
-<h2>{data.tagline}</h2>
- <h2> {data.genres.map(item=>item.name)} </h2> 
-<h2> {data.runtime}mins </h2>
-<h2>{data.overview}</h2>
-
-
-<Button variant="secondary" onClick={handleShow}>
-       Watch Trailer
-      </Button>
-{account!== "" &&<LoggedIn data={movieStatus}/>}
-
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{data.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-<Trailer data={context.trailerId}/>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-
-</div>
-</div>
-</div>
-  )
-
-}
-}
+}}
