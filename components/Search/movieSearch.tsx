@@ -11,7 +11,7 @@ export default function MovieSearch({ data}) {
         <div>
               {movies.map(item =>
        
-                <button className="movie" key={item.id} onClick={() => {changeMovie(item.id);setQuery('search','');window.scrollTo(0,0);}}>
+                <button className="movie" key={item.id} onClick={() => {changeMovie(item.id);setQuery('search','');window.scrollTo(0,350);}}>
                   <Image src={imgLink + item.poster_path} alt={item.title} width={75} height={150} />
                   <h1>{item.title}</h1>
                 </button>

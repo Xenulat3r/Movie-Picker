@@ -57,16 +57,18 @@ export default function Search() {
             
 <h2>{movies? 'Searching Movies' : 'Searching People'}</h2>
         {movies ? 
-                    <Button variant="outline-secondary" className='searchButton' onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("search", '');}}>Search People?</Button>:
-                    <Button variant="outline-secondary" className='searchButton'  onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("people", '');}}>Search Movies?</Button>}
-<InputGroup >
-<InputGroup.Text>{movies? 'Searching Movies' : 'Searching People'}</InputGroup.Text>
+                    <Button variant="outline-secondary" className='searchButton' onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("search", '');}}>Switch to People Search?</Button>:
+                    <Button variant="outline-secondary" className='searchButton'  onClick={()=>{setMovies(!movies);searchRef.current?.focus();setQuery("people", '');}}>Switch to Movie Search?</Button>}
+<InputGroup className="mb-3" >
+
         <Form.Control
+          autoFocus
           aria-label="Example text with button addon"
           aria-describedby="basic-addon1"
           as="input"
           ref={searchRef} 
           value={ movies ? searchQuery : peopleQuery}
+          placeholder={movies ? "Search Movie Titles":"Search Cast & Crew"}
           onChange={e => { movies ?  setQuery("search", e.target.value) : setQuery("people",e.target.value)} }
           
         />

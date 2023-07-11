@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { useAppContext } from '@/Context/links'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 
 
@@ -11,7 +13,6 @@ export default function Reel({ data }) {
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 7
     },
@@ -21,7 +22,7 @@ export default function Reel({ data }) {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 5
+      items: 4
     },
     mobile: {
       breakpoint: { max: 664, min: 0 },
@@ -29,7 +30,7 @@ export default function Reel({ data }) {
     },
     tinyMobile: {
       breakpoint: { max: 400, min: 0 },
-      items: 3
+      items: 2
     }
   };
 
@@ -39,19 +40,27 @@ export default function Reel({ data }) {
   return (
     <Carousel 
     responsive={responsive}
-    swipeable={false}
+    swipeable={true}
+    draggable={true}
     infinite={true}
+    itemClass="carouselItem"
+    removeArrowOnDeviceType={["tablet", "mobile","tinyMobile"]}
+
+
     >
 
-      {
-      movies.map(movie =>{
-    
-          return <button key={movie.id} onClick={() => context.changeMovie(movie.id)}>
-            <Image className='reelItem' src={context.imgLink + movie.poster_path} alt={movie.title}   height={250} width={100} />
-            <h1 className='reelText'>{movie.title}</h1>
 
-           
-          </button>}
+
+        {movies.map(movie=>
+        <button key={movie.id} onClick={() => {context.changeMovie(movie.id);window.scrollTo(0,200);}}>
+<Card  style={{ width: '10rem', height:'21rem' }}>
+<Card.Img variant="top" src={context.imgLink + movie.poster_path} />
+<Card.Body>
+  <Card.Title>  {movie.title}</Card.Title>
+
+</Card.Body>
+</Card>
+</button>
         )}
 
     </Carousel>

@@ -9,8 +9,6 @@ export default function DiscoverReel()  {
   const [loading,setLoading] = useState(false)
 
   useEffect(() => {
-    console.log(context.movie)
-
     setLoading(true);
     fetch(context.discoverLink)
       .then((res) => res.json())
@@ -19,7 +17,7 @@ export default function DiscoverReel()  {
           const {id} = data.results[0]
           context.changeMovie(id)
         setLoading(false); });
-        console.log(context.movie)
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context.discoverLink]);
 

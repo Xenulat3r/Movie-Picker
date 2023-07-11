@@ -52,19 +52,19 @@ export default function DiscoverNav() {
            
            
     </Tab>
-    <Tab eventKey="Search" title="Search">
+    <Tab eventKey="Search" title="Search" className="filters">
       <Search/>
     </Tab>
-    <Tab eventKey="Rating" title="Rating">
+    <Tab eventKey="Rating" title="Rating" className="filters">
       {showRating}
     </Tab>
-    <Tab eventKey="Genre" title="Genre">
+    <Tab eventKey="Genre" title="Genre" className="filters">
                 {allGenres && allGenres.map(item => {
                     const used =genres && genres.filter(genre=> genre.id === item.id).length > 0 ? 'dark' : 'primary'
                 return <Button variant={used} key={item.id} onClick={()=>{changeFilter('genre',item,'add')}}>{item.name}</Button>}
                 )}
     </Tab>
-    <Tab eventKey="Streaming" title="Streaming">
+    <Tab eventKey="Streaming" title="Streaming" className="filters">
     {providers && providers.map(item => 
                 <Button  key={item.provider_id} onClick={()=>{changeFilter('provider',item,'add')}}>
                     <Image className='filterImg' key={item.id} src={imgLink + item.logo_path} width={50} height={50} alt={item.provider_name} />

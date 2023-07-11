@@ -157,8 +157,8 @@ justify-content: baseline ;
 }
 
 .filters{
-  width:50%;
-  margin:0 auto;
+  width:100%;
+  margin:5px;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -199,7 +199,7 @@ h4>p{
 }
 @media (max-width:1000px) {
   .filters{
-    width:75%;
+    width:100%;
   }
 }
 
@@ -208,5 +208,13 @@ h4>p{
   .filters{
     width:100%;
   }
+
+}
+
+@media (max-width:375px) {
+  body{
+    font-size: 7px;
+  }
+
 
 }
