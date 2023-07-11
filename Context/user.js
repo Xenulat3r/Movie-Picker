@@ -39,7 +39,7 @@ export function UserProvider({ children }) {
     };
     fetch(`${baseLink}authentication/token/new`,  options)
       .then(response => response.json())
-      .then(response => window.location.replace(`https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=${myUrl}/approved`))
+      .then(response => window.location.replace(`https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=${myURL}/approved`))
       .catch(err => console.error(err));
 
   }
