@@ -7,9 +7,11 @@ import { List } from "@/components/list";
  
 import cookie from 'js-cookie'
 import { redirect } from 'next/navigation'
+
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
+  const myURL = process.env.url
   const auth = process.env.auth
   const [favorites, setFavorites] = useState([])
   const [movieStatus,setMovieStatus] = useState({})
@@ -37,7 +39,7 @@ export function UserProvider({ children }) {
     };
     fetch(`${baseLink}authentication/token/new`,  options)
       .then(response => response.json())
-      .then(response => window.location.replace(`https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:3000/approved`))
+      .then(response => window.location.replace(`https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=${myUrl}/approved`))
       .catch(err => console.error(err));
 
   }
