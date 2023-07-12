@@ -32,7 +32,7 @@ export default function DiscoverNav() {
     fetch(availProviders)
         .then((res) => res.json())
         .then((data) => {
-            setProviders(data.results.slice(0, 15))
+            setProviders(data.results?.slice(0, 15))
             
         })
     

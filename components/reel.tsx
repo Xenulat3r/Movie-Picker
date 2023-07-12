@@ -36,7 +36,7 @@ export default function Reel({ data }) {
 
 
   const context = useAppContext()
-  const movies = data.filter(item=>item.poster_path  !==null )
+  const movies = data?.filter(item=>item.poster_path  !==null )
   return (
     <Carousel 
     responsive={responsive}
@@ -51,7 +51,7 @@ export default function Reel({ data }) {
 
 
 
-        {movies.map(movie=>
+        {movies?.map(movie=>
         <button key={movie.id} onClick={() => {context.changeMovie(movie.id);window.scrollTo(0,200);}}>
 <Card  style={{ width: '10rem', height:'21rem' }}>
 <Card.Img variant="top" src={context.imgLink + movie.poster_path} />

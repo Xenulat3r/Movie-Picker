@@ -11,8 +11,8 @@ import { redirect } from 'next/navigation'
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  const myURL = process.env.url
-  const auth = process.env.auth
+  const myURL = process.env.URL
+  const auth = process.env.AUTH
   const [favorites, setFavorites] = useState([])
   const [movieStatus,setMovieStatus] = useState({})
   const [token, setToken] = useState('')
@@ -21,7 +21,7 @@ export function UserProvider({ children }) {
   const account = cookie.get('account_id')
   const name = cookie.get('name')
   const avatar = cookie.get('avatar')
-  const API = process.env.api
+  const API = process.env.API
   const baseLink = `https://api.themoviedb.org/3/`
   const tokenLink = `
   ${baseLink}authentication/token/new?api_key=${API}`

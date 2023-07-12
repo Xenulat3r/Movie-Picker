@@ -39,8 +39,8 @@ export function LinkProvider({ children }) {
 }
 
 
-  const myURL = process.env.url
-  const API = process.env.api
+  const myURL = process.env.URL
+  const API = process.env.API
   const baseLink = `https://api.themoviedb.org/3/`
   const linkGenre = genres.length > 0 ? `&with_genres=` + genreList : ''
   const linkPeople = people.length > 0 ? `&with_people=` + peopleList : ''
