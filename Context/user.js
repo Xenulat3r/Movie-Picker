@@ -11,7 +11,7 @@ import { redirect } from 'next/navigation'
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  const myURL = 'https://movie--picker.vercel.app/'
+  const myURL = process.env.url
   const auth = process.env.auth
   const [favorites, setFavorites] = useState([])
   const [movieStatus,setMovieStatus] = useState({})

@@ -11,7 +11,7 @@ env:{
 
   api:'5d9395e25035b47b7ded3fd5a8dbb8bc',
 
-  url:'http://localhost:3000'
+  url:'https://movie--picker.vercel.app/'
 
 }
 
