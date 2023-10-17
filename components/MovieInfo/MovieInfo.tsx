@@ -1,113 +1,61 @@
-import { useAppContext } from "@/Context/links"
-import { useSessionContext } from '../../Context/user';
-import {useState,useEffect} from 'react'
-import Trailer from "./Trailer";
+'use client'
 import Image from "next/image"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import LoggedIn from "./LoggedIn";
 import Card from 'react-bootstrap/Card';
 import Placeholder from 'react-bootstrap/Placeholder';
 import Badge from 'react-bootstrap/Badge';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { addFavorite } from "@/utils/getUser";
+import { addToList } from "@/utils/getLists";
+import { useRouter } from 'next/navigation'
+import { useState } from "react";
+import Trailer from "./trailer";
+import Watch from "./watch";
+export default function MovieInfo({data,user,favorite,lists,session,providers,trailerId}){
 
-export default function MovieInfo() {
-    const context = useAppContext()
-    const {addFavorite,account,sessionId,movieStatus,getMovieStatus,addToList,getLists,lists,createList} = useSessionContext()
-    const usingFilters = context.letterRating.length > 0 || context.usedGenres.length > 0 || context.usedProviders.length > 0||
-    context.showPeople.length > 0 
-    const [data,setData] = useState({
-        title:"",
-        tagline:"",
-        backdrop_path:"",
-        runtime:"",
-        overview:"",
-        genres:[{name:""}]
-    })
-    const [loading,setLoading] = useState(true)
-    const [fave,setFave] = useState(false)
-    const [show, setShow] = useState(false);
-    const [listName,setListName] = useState('')
+  const router = useRouter()
 
+  const imgLink = `https://image.tmdb.org/t/p/original/`
+  
+  const [show, setShow] = useState(false);
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-    useEffect(() => {
-     
-
-        if(context.movie !== ""){
-        fetch(context.infoLink)
-          .then((res) => res.json())
-          .then((data) => {
-            setData(data);
-            context.getTrailer(context.movie)   
-setLoading(false)
-          });} 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [data,context.infoLink,context.movie]);
-
-      useEffect(()=>{
-         if(context.movie && sessionId){
-            getMovieStatus(context.movie)
-            getLists()
-  
-          }
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[sessionId,context.movie,loading])
-
-if(context.movie == ""){
-    return(
-      <Card style={{ width: '100%' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Placeholder as={Card.Title} animation="glow">
-          <Placeholder xs={6} />
-        </Placeholder>
-        <Placeholder as={Card.Text} animation="glow">
-          <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-          <Placeholder xs={6} /> <Placeholder xs={8} />
-        </Placeholder>
-        <Placeholder.Button variant="primary" xs={6} />
-      </Card.Body>
-    </Card>)
-}else{
-  return (
+  const changeFavorite = favorite ? <Button onClick={()=>{addFavorite('movie',data.id,false,user); router.refresh()}}>Remove From Favorites?</Button> : 
+<Button onClick={()=>{addFavorite('movie',data.id,true,user); router.refresh();}}>Add To Favorites?</Button>
+  const addList =  lists.map(item=>  <Dropdown.Item key={item.id} onClick={()=>{addToList(item.id,data.id,session);router.refresh()}}>{item.name}</Dropdown.Item>)
+    return( <div>
     <div className="d-flex justify-content-around">      
- 
     <Card style={{ width: '100%' }}>
-{usingFilters && <Card.Header>Top Result</Card.Header>} 
       <Card.Body>
-      <div className="selectedMovie" style={{
+      <div className="selectedCastMovie" style={{
          backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`
           }}>
 <div className="movieInfoBackground"> 
   <h1>{data.title}</h1>
   <div className="movieInfo">
- <h1>{data.tagline}</h1>
-
+  <h1>{data.tagline && data.tagline}</h1>
 
 </div></div></div>
-<Card.Title>
- 
-</Card.Title>
-        <Card.Text>
- <h5> {data.genres.map(item=><Badge bg="secondary" key={item.name}>{item.name}</Badge>)} </h5> 
-<h5> {data.runtime}mins </h5>
-<h5>{data.overview}</h5>
-        </Card.Text>
-        <Button variant="secondary" onClick={handleShow}>
-       Watch Trailer
-      </Button>
-{account!== "" &&<LoggedIn data={movieStatus}/>}
 
+<Card.Text>
+{ data.runtime &&  data.runtime+ " mins"}<br/>
+{data.overview && data.overview}
+</Card.Text>
+{trailerId &&<div>
+  <Button onClick={handleShow} >Watch Trailer</Button>
 
-      <Modal show={show} onHide={handleClose}>
+<Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{data.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
-<Trailer data={context.trailerId}/>
+<Trailer data={trailerId}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -115,11 +63,18 @@ if(context.movie == ""){
           </Button>
         </Modal.Footer>
       </Modal>
+      
+     </div> }
 
+{ user !== undefined && changeFavorite}
+{user !== undefined &&     <DropdownButton id="dropdown-basic-button" title="Add to a List?">{addList}</DropdownButton>}
+
+
+{ providers &&
+<Watch data={providers}/>
+}
       </Card.Body>
     </Card>
-
-
-  </div>
-  )
-}}
+        </div></div>
+    )
+}

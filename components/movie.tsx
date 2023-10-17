@@ -1,23 +1,36 @@
-import Image from "next/image"
-import Reel from "./reel"
-import { useAppContext } from '@/Context/links'
-import Link from "next/link"
+'use client'
 
+import Card from 'react-bootstrap/Card';
+import Link from 'next/link';
 
-export const Movie = ({data}) =>{
-    const {setDiscover} = useAppContext()
-  
-    const imgLink = `https://image.tmdb.org/t/p/original/`
+export default function Movie({ movie, width }: {
+  movie: {
+    media_type: string,
+    id: number,
+    backdrop_path: string,
+    title: string,
+    overview: string,
+    genre_ids: [number],
+    popularity: number,
+    vote_average: number,
+    release_date: Date,
+    poster_path: string,
+    character: string,
+    job: string
+  }
+  width: number,
 
-   return (
-    <>
-    {data?.map(movie=><button className="movie favMovie" key={movie.id} >
+}) {
+  const imgLink = `https://image.tmdb.org/t/p/original/`
+  return (
 
-    <Image src={imgLink + movie.poster_path} alt={movie.title} width={75} height={150} />
-              <h1>{movie.title}</h1> 
-
-    </button>)}
-    </>
-   )
-
+    <Link key={movie.id} href={`/movies/${movie.id}`} className='movie'> <button  >
+      <Card style={{ width: `${width}rem`, }}>
+      {movie.poster_path &&  <Card.Img variant="top" src={imgLink + movie.poster_path} />}
+        <Card.Body>
+          <Card.Title>  {movie.title}</Card.Title>
+          {movie.character || movie.job &&<Card.Text>{movie.character || movie.job}</Card.Text>}
+        </Card.Body>
+      </Card>
+    </button></Link>)
 }

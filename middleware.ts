@@ -1,54 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server'
-import cookie from 'js-cookie'
-
-
+import { getToken } from './utils/getUser'
 export async function middleware(req: NextRequest, res: NextResponse) {
-  const response = NextResponse.next()
-  
-  const auth:string = process.env.auth !== undefined ? process.env.auth : ""
-  
-    if (req.nextUrl.pathname.startsWith('/approved')) {
-        const token = req.nextUrl.searchParams.get("request_token")
-        const token2:string = token !== null ? token : ""
+  const AUTH: string = process.env.NEXT_PUBLIC_AUTH !== undefined ? process.env.NEXT_PUBLIC_AUTH : ""
+  const myURL = process.env.NEXT_PUBLIC_URL
+  if (req.nextUrl.pathname.startsWith('/approved')) {
 
-        response.cookies.set("token",token2)
-     
-    const getSession =  await fetch('https://api.themoviedb.org/3/authentication/session/new', {
+    const token = req.nextUrl.searchParams.get("request_token")
+    const request_token: string = token !== null ? token : ""
+    const options = {
       method: 'POST',
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        Authorization: auth
+        Authorization: AUTH
       },
-      body: JSON.stringify({request_token: token2})
-    }).then(response => response.json()).then(response=>{return response})
+      body: JSON.stringify({ request_token })
+    };
 
-        const session:string = getSession.session_id !== null ? getSession.session_id : ""
-        response.cookies.set("id",session)
+    const request = await fetch('https://api.themoviedb.org/3/authentication/session/new', options)
 
-        const getDetails =  await fetch(`https://api.themoviedb.org/3/account?session_id=${session}`, {
-          method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: auth
-          }
-        }).then(response => response.json()).then(response=>{return response})
-        const avatar = getDetails.avatar
-        const iso = getDetails.iso_639_1 + '-' + getDetails.iso_3166_1
-        const name : string = getDetails.name !== null ? getDetails.name : ""
-        const account_id : string = getDetails.id !== null ? getDetails.id : ""
-        const language : string =  iso !== null ? iso :""
-       const avatar1 : string = avatar.tmdb.avatar_path !== null ? avatar.tmdb.avatar_path :""
-      
+    const { session_id } = await request.json()
 
-        response.cookies.set("language",language)
-        response.cookies.set("name",name)
-        response.cookies.set("account_id",account_id)
-         response.cookies.set("avatar",avatar1)
-
-
-
+    const response = NextResponse.next()
+    response.cookies.set("session", session_id)
+    if (session_id) {
       return response
-}
+    } else {
+      console.log(session_id)
+      const request = await fetch('https://api.themoviedb.org/3/authentication/session/new', options)
+        .then(res => res.json())
+        .then(res => console.log(res))
+      console.log(request)
+      return response
+    }
 
+  }
+
+
+  // if (req.nextUrl.pathname.startsWith('/login')) {
+  //   const token = await getToken()
+  //   console.log(token)
+  //   const link = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${myURL}approved`
+
+  //   return NextResponse.redirect(new URL(link))
+  // }
+
+  if (req.nextUrl.pathname.startsWith('/logout')) {
+    const response = NextResponse.next()
+    response.cookies.delete("session");
+
+    return response
+  }
 }

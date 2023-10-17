@@ -1,5 +1,7 @@
+'use client'
 import YouTube, { YouTubeProps } from 'react-youtube';
 export default function Trailer({data}){
+
 
     const onPlayerReady: YouTubeProps['onReady'] = (event) => {
         // access to player in all event handlers via event.target

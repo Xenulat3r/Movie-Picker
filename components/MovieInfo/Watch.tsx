@@ -1,95 +1,62 @@
-import {useEffect,useState} from 'react'
+'use client'
 import Accordion from 'react-bootstrap/Accordion';
-import { useAppContext } from "@/Context/links"
-import { Button } from 'react-bootstrap';
-import Image from 'next/image'
-export default function Watch(){
-    const {movie,imgLink,getMovieProviders} = useAppContext()
-    const[movieProviders,setMovieProviders] = useState({
-        link:'',
-        flatrate:[{
-            logo_path:'', 
-            provider_id:"",
-            provider_name:"",
-        }],
-        rent:[{
-            logo_path:'', 
-            provider_id:"",
-            provider_name:"",
-        }],
-        buy:[{
-            logo_path:'', 
-            provider_id:"",
-            provider_name:"",
-        }]
-    })
-    async function setWatchProviders (){
+import Image from 'next/image';
+export default function Watch({data}:{
+                        data:{  
+                            free:[{
+                                provider_id:string,
+                                logo_path:string,
+                                provider_name:string,
+                                }], 
+                            ads:[{provider_id:string,
+                                logo_path:string,
+                                provider_name:string,
+                                }],
+                            rent:[{provider_id:string,
+                                logo_path:string,
+                                provider_name:string,
+                                }],
+                            buy:[{provider_id:string,
+                                logo_path:string,
+                                provider_name:string,
+                                }]
+                        }}){
+                            const imgLink = `https://image.tmdb.org/t/p/original/`
+                           
+                            
 
-   const watch = await fetch(getMovieProviders).then(res=>res.json()).then(res=>{return res.results.US})
-   setMovieProviders(watch)
-}
+    return (
+        <div>
+        <Accordion defaultActiveKey="0" flush>
+            
 
-useEffect(()=>{
-    if(movie !== ""){
-        setWatchProviders()
+{data.free &&      <Accordion.Item eventKey="0">
+        <Accordion.Header>Streaming Free</Accordion.Header>
+        <Accordion.Body>
+{data.free.map(item=><button key={item.provider_id}><Image src={imgLink + item.logo_path} width={100} height={100} alt={item.provider_name}></Image>{item.provider_name}</button>)}
+        </Accordion.Body>
 
-}
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[movie])
-
-
-
-if(movieProviders !== undefined){
-    return(
-        <Accordion >
-        <Accordion.Item eventKey="0">
-          <Accordion.Header><h4>Stream <p>{movieProviders.flatrate !== undefined ? movieProviders.flatrate.length : "No"}  Results</p></h4></Accordion.Header>
-          <Accordion.Body>
-{movieProviders.flatrate !== undefined && <div className="filter">
-
-{movieProviders.flatrate?.map(item=>
-    <Button key={item.provider_id}>
-                 <Image className='filterImg' src={imgLink + item.logo_path} width={50} height={50} alt={item.provider_name} />
-                 {item.provider_name} 
-    </Button> )}
-
-</div>}
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header><h4>Rent <p>{movieProviders.flatrate !== undefined ? movieProviders.flatrate.length : "No"}  Results</p></h4></Accordion.Header>
-          <Accordion.Body>
- { movieProviders.flatrate !== undefined &&          <div className="filter">
-
-{movieProviders.flatrate?.map(item=>
-
-
-    <Button key={item.provider_id}>
-         <Image className='filterImg' src={imgLink + item.logo_path} width={50} height={50} alt={item.provider_name} />
-        
-        {item.provider_name} 
-    </Button> )}
-
-</div>}
-          </Accordion.Body>
-        </Accordion.Item>
-
-        <Accordion.Item eventKey="2">
-          <Accordion.Header><h4> Buy  <p>{movieProviders.buy !== undefined ? movieProviders.buy.length : "No"} Results</p></h4> </Accordion.Header>
-          <Accordion.Body>
-   {movieProviders.buy !== undefined &&   <div className="filter">
-{movieProviders.buy?.map(item=>
-    <Button key={item.provider_id}>
-                 <Image className='filterImg' src={imgLink + item.logo_path} width={50} height={50} alt={item.provider_name} />
-        {item.provider_name} 
-
-    </Button> )}
-
-</div>}
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-    )} else{
-        return null
-    }
+      </Accordion.Item>}
+{data.ads &&      <Accordion.Item eventKey="1">
+        <Accordion.Header>Watch with Ads</Accordion.Header>
+        <Accordion.Body>
+        {data.ads.map(item=><button key={item.provider_id}><Image src={imgLink + item.logo_path} width={100} height={100} alt={item.provider_name}></Image>{item.provider_name}</button>)}
+        </Accordion.Body>
+      </Accordion.Item>}
+{data.rent &&      <Accordion.Item eventKey="2">
+        <Accordion.Header>Rent</Accordion.Header>
+        <Accordion.Body>
+        {data.rent.map(item=><button key={item.provider_id}><Image src={imgLink + item.logo_path} width={100} height={100} alt={item.provider_name}></Image>{item.provider_name}</button>)}
+        </Accordion.Body>
+      </Accordion.Item>}
+{data.buy &&
+      <Accordion.Item eventKey="3">
+        <Accordion.Header>Buy</Accordion.Header>
+        <Accordion.Body>
+        {data.buy.map(item=><button key={item.provider_id}><Image src={imgLink + item.logo_path} width={100} height={100} alt={item.provider_name}></Image>{item.provider_name}</button>)}
+        </Accordion.Body>
+      </Accordion.Item>}
+    </Accordion>
+        </div>
+    )
 }

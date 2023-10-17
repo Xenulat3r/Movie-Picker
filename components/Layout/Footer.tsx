@@ -1,11 +1,6 @@
-import Link from 'next/link'
-import React from 'react'
-
-
-const Footer = () => {
-  return (
-    <div><Link href="https://kbrandt-portfolio.vercel.app/">Back to Portfolio</Link></div>
-  )
+import Link from "next/link"
+export default function Footer(){
+    return(
+        <footer><Link href="https://kbrandt-portfolio.vercel.app/">Back to Portfolio</Link></footer>
+    )
 }
-
-export default Footer

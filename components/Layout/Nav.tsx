@@ -1,47 +1,22 @@
 import Link from "next/link"
-import Nav from 'react-bootstrap/Nav';
-import { useSessionContext} from '@/Context/user';
-import {useEffect,useState  }  from 'react'
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import { Button } from 'react-bootstrap';
 
-export default function NavBar(){
-  const { account } = useSessionContext()
-  const [div, setDiv] = useState(<div></div>)
-
-
- const hasAccountTabs =    <div>  
-    <Nav variant="tabs" defaultActiveKey="/home">
-          <Nav.Item>
-            <Nav.Link href={`/`} as={Link}>Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-   
-            <Nav.Link href={`/account`} as={Link} eventKey="disabled" >
-              Account
-            </Nav.Link>
-         
-          </Nav.Item>
-        </Nav>
-            </div>
+export default function NavBar({ loggedIn }: { loggedIn: boolean }) {
 
 
- const noAccountTabs =  <div>  
-<Nav variant="tabs" defaultActiveKey="/home">
-      <Nav.Item>
-        <Nav.Link href={`/`} as={Link}>Home</Nav.Link>
-      </Nav.Item>
-    </Nav>
-        </div>
+    return (
+        <Navbar className="bg-body-tertiary">
+           <Container> <Link href={'/'} className='nav-link'>Home</Link></Container>
+           {loggedIn && <Container><Link href={'/dashboard'} className='nav-link'>Dashboard</Link></Container>}
+           {loggedIn && <Container><Link href={'/account'} className='nav-link'>Account</Link></Container>}
+           <Container><Link href={'/discover'} className='nav-link'>Discover</Link></Container>
+            <Container><Link href={'/search'} className='nav-link'>Search</Link></Container>
+            
 
-useEffect(()=>{
-if(account){
-  setDiv(hasAccountTabs)
-} else{
-  setDiv(noAccountTabs)
-}
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[account])
-
-return div
-
-    
+        </Navbar>
+    )
 }
