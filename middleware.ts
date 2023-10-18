@@ -38,7 +38,6 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   if (req.nextUrl.pathname.startsWith('/logout')) {
     const response = NextResponse.next()
     response.cookies.delete("session");
-
     return response
   }
 }
