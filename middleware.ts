@@ -37,14 +37,6 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   }
 
 
-  // if (req.nextUrl.pathname.startsWith('/login')) {
-  //   const token = await getToken()
-  //   console.log(token)
-  //   const link = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${myURL}approved`
-
-  //   return NextResponse.redirect(new URL(link))
-  // }
-
   if (req.nextUrl.pathname.startsWith('/logout')) {
     const response = NextResponse.next()
     response.cookies.delete("session");
