@@ -19,7 +19,7 @@ export default function User({ data, faves }: { data: { username: string, avatar
 
         >
 
-            {faves.map(fave =>
+            {faves.map((fave:any) =>
                 <Carousel.Item key={fave.id}>
                     <div className="selectedMovie" style={{
                         backgroundImage: `url(https://image.tmdb.org/t/p/original/${fave.backdrop_path})`

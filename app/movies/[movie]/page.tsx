@@ -10,7 +10,7 @@ export default async function Home({ params }: { params: { movie: string } }) {
     const {movie} = params
     const data = await getMovieInfo(movie)
     const cookieStore = cookies()
-    const session = cookieStore.get('session')?.value
+    const session = cookieStore.get('session')?.value || ""
     const {id} = await getUserAccount(session)
     const lists = await getLists(id)
  const recommended = await getRecs(movie) 

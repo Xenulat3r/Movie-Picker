@@ -12,7 +12,7 @@ export default async function ListList({ id }: { id: string  }) {
     return (
         <>
         <div className='flex flex-row flex-wrap m-2' >
-{items.map(item=><div key={item.id} className='m-2' >
+{items.map((item:any)=><div key={item.id} className='m-2' >
     <Movie movie={item} width={7}/>
 </div>)}
 </div>

@@ -4,11 +4,11 @@ import Link from "next/link"
 import ListEdit from "./listEdit"
 import Card from 'react-bootstrap/Card';
 import { Button } from "react-bootstrap";
-export default async function List({ data, account }: { account: boolean, data: [{ id: string, name: string, description: string }] }) {
+export default function List({ data, account }: { account: boolean, data: [{ id: string, name: string, description: string }] }) {
 
 
    return (<div className='flex flex-row justify-stretch' >
-      {data.map(item => <div className='m-1' key={item.id}>
+      {data.map((item:any) => <div className='m-1' key={item.id}>
          <Card style={{ width: '10rem'}}>
             <Card.Title className='text-center'>
                <h1>{item.name}</h1>

@@ -38,7 +38,7 @@ export default function MovieCarousel({movies}:{movies:[{
       const data = movies.filter(item=>item.poster_path !== null)
       return(
       <Carousel responsive={responsive}>
-{data.map(movie=> <div key={movie.id}><Movie movie={movie} width={8}/></div> )}
+{data.map((movie:any)=> <div key={movie.id}><Movie movie={movie} width={8}/></div> )}
       </Carousel>)
 
 }

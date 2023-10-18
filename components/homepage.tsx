@@ -65,7 +65,7 @@ export function HomePage({ data }: {
 
             >
 
-                {data.popular.results.map(movie =>
+                {data.popular.results.map((movie:any) =>
 
                     <Carousel.Item key={movie.id}><Link href={`/movies/${movie.id}`}>
                         <div className="selectedMovie" style={{

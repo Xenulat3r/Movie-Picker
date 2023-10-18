@@ -11,8 +11,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     const accountDetails = await getUserInfo(id)
     const lists = await getLists(id)
     const {results} = await getFavorites(id)
-    const filtered = results.filter(item=>item.backdrop_path !== undefined)
-    const sorted = filtered.sort((a,b)=> b.vote_average -  a.vote_average)
+    const filtered = results.filter((item:any)=>item.backdrop_path !== undefined)
+    const sorted = filtered.sort((a:any,b:any)=> b.vote_average -  a.vote_average)
 
     return(<>
      <div className='text-center m-2'>
@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { id: string } }) {
  <div className='text-center m-2'>
     <h1>Lists:</h1>
    
-    {lists.map(item=><div key={item.id} >
+    {lists.map((item:any)=><div key={item.id} >
         <h1><Link href={`/lists/${item.id}`}>{item.name}</Link></h1>
         <h5>{item.description && item.description }</h5>
 

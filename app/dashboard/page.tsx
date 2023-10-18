@@ -1,6 +1,6 @@
 import { getFavorites, getUserAccount } from '@/utils/getUser'
 import { cookies } from 'next/headers'
-import {getFaves, basedOnList} from '@/utils/getDash'
+import {getFaves} from '@/utils/getDash'
 import Dashboard from '@/components/dashboard/dashboard';
 import Movie from '@/components/dashboard/movie';
 import MovieRecs from '@/components/dashboard/movie';
@@ -16,7 +16,7 @@ export default async  function Page() {
   return (
     <>
     <Dashboard data={data} />
-{faves.map(item=>
+{faves.map((item:any)=>
 <div key={item.id}>
   <MovieRecs movie={item} />
   </div>

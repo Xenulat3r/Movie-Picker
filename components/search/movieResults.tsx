@@ -1,18 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-export default function MovieResults({ data}:{data:[{        
-  media_type:string,
-  id:number,
-  backdrop_path:string,
-  title:string,
-  overview:string,
-  genre_ids:[number],
-  popularity:number,
-  vote_average:number,
-  release_date: Date,
-  poster_path:string,
-  }]}) {
+import { movieResult } from '@/utils/getTypes'
+export default function MovieResults({ data}:{data:Array<movieResult>}) {
   
 
 
@@ -23,7 +13,7 @@ export default function MovieResults({ data}:{data:[{
     return( 
       <div className=' flex flex-column  '>
 
-              {movies.map(item =>
+              {movies.map((item:any) =>
    <div key={item.id} > 
 
                    <button className=' w-100  p-1 m-1 flex flex-row justify-left bg-slate-100 hover:bg-slate-300'>

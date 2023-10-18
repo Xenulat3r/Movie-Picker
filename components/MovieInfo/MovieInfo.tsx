@@ -13,7 +13,22 @@ import { useRouter } from 'next/navigation'
 import { useState } from "react";
 import Trailer from "./trailer";
 import Watch from "./watch";
-export default function MovieInfo({data,user,favorite,lists,session,providers,trailerId}){
+import { movieInfo,list,provider } from "@/utils/getTypes";
+export default function MovieInfo({data,user,favorite,lists,session,providers,trailerId}:{
+ data:movieInfo,
+ user:string,
+ favorite:boolean,
+ lists:[list],
+ session:string,
+ providers:{
+  free:[provider], 
+  ads:[provider],
+  rent:[provider],
+  buy:[provider]
+ },
+ trailerId:string
+  
+}){
 
   const router = useRouter()
 
@@ -27,7 +42,7 @@ export default function MovieInfo({data,user,favorite,lists,session,providers,tr
 
   const changeFavorite = favorite ? <Button onClick={()=>{addFavorite('movie',data.id,false,user); router.refresh()}}>Remove From Favorites?</Button> : 
 <Button onClick={()=>{addFavorite('movie',data.id,true,user); router.refresh();}}>Add To Favorites?</Button>
-  const addList =  lists.map(item=>  <Dropdown.Item key={item.id} onClick={()=>{addToList(item.id,data.id,session);router.refresh()}}>{item.name}</Dropdown.Item>)
+  const addList =  lists.map((item:any)=>  <Dropdown.Item key={item.id} onClick={()=>{addToList(item.id,data.id,session);router.refresh()}}>{item.name}</Dropdown.Item>)
     return( <div>
     <div className="d-flex justify-content-around">      
     <Card style={{ width: '100%' }}>

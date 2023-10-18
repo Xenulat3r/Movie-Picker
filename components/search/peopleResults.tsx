@@ -1,11 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-export default function PeopleResults({ data}:{data:[{
-                                profile_path:string,
-                                name:string,
-                                id:number
-                            }]}) {
+import { peopleResult } from '@/utils/getTypes'
+export default function PeopleResults({ data}:{data:Array<peopleResult>}) {
   
 
 
@@ -16,7 +13,7 @@ export default function PeopleResults({ data}:{data:[{
     return( 
       <div className=' flex flex-column  '>
 
-               {people.map(item =>
+               {people.map((item:any) =>
    <div key={item.id} > 
 
 <button className=' w-100  p-1 m-1 flex flex-row justify-left bg-slate-100 hover:bg-slate-300'>

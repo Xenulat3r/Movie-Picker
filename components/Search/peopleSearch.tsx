@@ -5,13 +5,14 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {useState,useEffect} from 'react'
 import PeopleResults from '@/components/search/peopleResults';
+import { peopleResult } from '@/utils/getTypes';
 export default function PeopleSearch(){
     const myURL = process.env.NEXT_PUBLIC_URL
     const API = process.env.NEXT_PUBLIC_API
     const baseLink = `https://api.themoviedb.org/3/`
     const [peopleQuery,setPeopleQuery] = useState("")
     
-    const [peopleResults,setPeopleResults] = useState([])    
+    const [peopleResults,setPeopleResults] = useState<Array<peopleResult>>([])    
     const fetcher = (url:string) => fetch(url).then((res) => res.json());
 const peopleSearchLink = `${baseLink}search/person?api_key=${API}&language=us-en&page=1&include_adult=false&query=${peopleQuery}`
 

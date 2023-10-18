@@ -6,7 +6,15 @@ import { clearList, deleteList, removeFromList } from "@/utils/getLists"
 import Link from 'next/link';
 import { useState } from 'react';
 import Discover from '../discover/discover';
-export default function ListEdit({ list, items, token }) {
+import { movie } from '@/utils/getTypes';
+export default function ListEdit({ list, items, token }:{
+  list:{
+    backdrop_path:string,
+    id:number
+  },
+  token:string,
+  items:Array<movie>
+}) {
   const imgLink = `https://image.tmdb.org/t/p/original/`
   const router = useRouter()
   const [edit,setEdit] = useState(false)
@@ -18,7 +26,7 @@ export default function ListEdit({ list, items, token }) {
   <Button onClick={()=>setEdit(true)}>Edit</Button>
 
 </div> }
-{edit &&    <div> {items?.map(movie => <div className="movie favMovie" key={movie.id} >
+{edit &&    <div> {items?.map((movie:movie) => <div className="movie favMovie" key={movie.id} >
 
         <Link href={`/movies/${movie.id}`}>
 

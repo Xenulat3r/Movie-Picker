@@ -15,7 +15,7 @@ export default function Dashboard({data}:{data:{name:string,
 router.refresh()
 setLoading(false)
     }
-  },[loading])
+  },[loading,router])
   return (
 <div>
     <h1>Welcome back {data.name}!</h1>

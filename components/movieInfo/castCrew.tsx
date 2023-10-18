@@ -12,7 +12,7 @@ export default function Cast({ cast,crew }: { cast: [{ id: string, name: string,
         <Accordion.Header>Cast</Accordion.Header>
         <Accordion.Body>
         <div className='flex flew-row flex-wrap'>
-        {cast.map(item => 
+        {cast.map((item:any) => 
             <Card style={{width:`5rem`}} className='m-1 text-center' key={item.id}>
                <Link href={`/cast/${item.id}`}><Card.Text>{item.name}</Card.Text></Link>
                 {item.profile_path && <Link href={`/cast/${item.id}`}><Card.Img src={imgLink + item.profile_path} /></Link>}
@@ -27,7 +27,7 @@ export default function Cast({ cast,crew }: { cast: [{ id: string, name: string,
         <Accordion.Header>Crew</Accordion.Header>
         <Accordion.Body>
         <div className='flex flew-row flex-wrap'>
-        {crew.map(item => 
+        {crew.map((item:any) => 
             <Card style={{width:`5rem`}} className='m-1 text-center' key={crew.indexOf(item)}>
                <Link href={`/cast/${item.id}`}><Card.Text>{item.name}</Card.Text></Link>
                 {item.profile_path && <Link href={`/cast/${item.id}`}><Card.Img src={imgLink + item.profile_path} /></Link>}
