@@ -4,7 +4,6 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   const AUTH: string = process.env.NEXT_PUBLIC_AUTH !== undefined ? process.env.NEXT_PUBLIC_AUTH : ""
   const myURL = process.env.NEXT_PUBLIC_URL
   if (req.nextUrl.pathname.startsWith('/approved')) {
-    const sameSite = "none"
     const token = req.nextUrl.searchParams.get("request_token")
     const request_token: string = token !== null ? token : ""
     const options = {
@@ -22,7 +21,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     const { session_id } = await request.json()
     const oneDay = 24 * 60 * 60 * 1000
     const response = NextResponse.next()
-    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite })
+    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none" })
     if (session_id) {
       return response
     } else {
