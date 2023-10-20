@@ -21,14 +21,15 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     const { session_id } = await request.json()
     const oneDay = 24 * 60 * 60 * 1000
     const response = NextResponse.next()
-    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"lax" })
+    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none" ,secure: true})
     if (session_id) {
       return response
     } else {
       const request = await fetch('https://api.themoviedb.org/3/authentication/session/new', options)
         .then(res => res.json())
         .then(res => console.log(res))
-      console.log(request)
+    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none",secure: true })
+
       return response
     }
 
