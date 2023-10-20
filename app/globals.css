@@ -52,6 +52,9 @@ h2{
 h3{
   font-size: 1rem;
 }
+h5{
+  font-size: 1.5rem!important;
+}
 p{
   font-family: Oswald !important;
 }
@@ -289,13 +292,10 @@ footer>a:hover{
 
  /* .nav-link{
   color:#fff!important;
-  letter-spacing:1px;
-  position: relative;
   background-color: #0d6dfd!important;
   border:#fff;
   margin:5px;
-  font-size:1.5rem;
-
+  font-size:1.5rem!important;
   text-align:center;
 }  */
 ul{
