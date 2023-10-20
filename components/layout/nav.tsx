@@ -10,22 +10,6 @@ export default function NavBar({ loggedIn }: { loggedIn: boolean }) {
 
 
     return (
-//         <Navbar expand="lg" bg="primary" data-bs-theme="dark">
-//               <Container>    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//        </Container>
-//           <Nav >
-//         <Navbar.Collapse id="basic-navbar-nav">
-//  <Container><Nav.Link as={Link} href={`/`}>Home</Nav.Link></Container>
-//  <Container><Nav.Link as={Link} href={'/dashboard'}> Dashboard</Nav.Link></Container>
-//  <Container><Nav.Link as={Link} href={'/account'}> Account</Nav.Link></Container>
-//  <Container><Nav.Link as={Link} href={'/discover'}> Discover </Nav.Link></Container>
-//  <Container><Nav.Link as={Link} href={'/search'}> Search</Nav.Link></Container>
-
-              
-//               </Navbar.Collapse>
-//           </Nav>
-      
-//       </Navbar>
 <Navbar bg="primary" expand="sm" data-bs-theme="dark" className="bg-body-primary">
  <Container>
    <Navbar.Brand as={Link} href={`/`}><h5>Movie--Picker</h5></Navbar.Brand>

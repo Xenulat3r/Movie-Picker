@@ -57,6 +57,7 @@ h5{
 }
 p{
   font-family: Oswald !important;
+  font-size:1rem;
 }
 
 a{
@@ -290,14 +291,6 @@ footer>a:hover{
 
 }
 
- /* .nav-link{
-  color:#fff!important;
-  background-color: #0d6dfd!important;
-  border:#fff;
-  margin:5px;
-  font-size:1.5rem!important;
-  text-align:center;
-}  */
 ul{
   margin:0 auto;
 }
@@ -346,27 +339,19 @@ max-width:90%;
 }
 
 @media (max-width:375px) {
- header,main{
-  width:100%;
- }
 
   .listItem{
     flex-direction: column;
     text-align: center;
   }
-  body{
-    font-size: 7px;
-  }
+
   .selectedMovie{
     height:250px;
   }
-  main{
-    max-width:90%;
+  main,header{
+    width:100%;
   }
-  header{
-    max-width:90%;
-    overflow:hidden;
-  }
+
 
 
 }
