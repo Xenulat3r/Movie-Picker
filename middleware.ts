@@ -21,7 +21,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     const { session_id } = await request.json()
     const oneDay = 24 * 60 * 60 * 1000
     const response = NextResponse.next()
-    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none" })
+    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"lax" })
     if (session_id) {
       return response
     } else {
