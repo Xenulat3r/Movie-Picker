@@ -13,7 +13,9 @@ export default async function Page({params}:{params:{id:string}}){
     const token = cookieStore.get('movieSession')?.value || ""
     
     if(token !== ""){return(
+      <main>
 <ListEdit list={list} items={items} token={token}/>
+</main>
       )}else{
         redirect("/")
       }

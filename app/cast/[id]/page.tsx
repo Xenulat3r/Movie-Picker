@@ -7,8 +7,8 @@ export default async function castPage({ params }: { params: { id: string } }) {
     const {cast,crew} = await getCastDetails(id)
  
     return(
-<div>
+<main>
 <CastProfile data={data} cast={cast} crew={crew} />  
-</div>
+</main>
     )
 }

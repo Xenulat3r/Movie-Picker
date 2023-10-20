@@ -26,8 +26,8 @@ export default function Search() {
     }, [data])
 
     return (
-        <div>
-            <InputGroup className="mb-3" >
+        <main>
+            <InputGroup className="mb-3 mt-3" >
                 <Form.Control
                     autoFocus
                     aria-label="Example text with button addon"
@@ -42,6 +42,6 @@ export default function Search() {
             {movieResults.length > 0 && <MovieResults data={movieResults} />}
 
 
-        </div>
+        </main>
     )
 }

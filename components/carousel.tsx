@@ -28,7 +28,7 @@ export default function MovieCarousel({movies}:{movies:[{
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 4
+          items: 3
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
@@ -37,7 +37,7 @@ export default function MovieCarousel({movies}:{movies:[{
       };
       const data = movies.filter(item=>item.poster_path !== null)
       return(
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} className='theCarousel'>
 {data.map((movie:any)=> <div key={movie.id}><Movie movie={movie} width={8}/></div> )}
       </Carousel>)
 

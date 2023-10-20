@@ -15,9 +15,9 @@ export default async function Page() {
 
 
     return (
-        <div>
+        <main>
 <Discover info={data}/>
 
-        </div>
+        </main>
     )
 }

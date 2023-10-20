@@ -53,7 +53,7 @@ export function HomePage({ data }: {
 }) {
     const [show, setShow] = useState(false)
     return (
-        <div className="text-center">
+        <main className="text-center">
             <h1>Popular Right Now:</h1>
             <Carousel
                 fade
@@ -99,6 +99,6 @@ export function HomePage({ data }: {
                 </Button>
             </div>
 
-        </div>
+        </main>
     )
 }

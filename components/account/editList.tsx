@@ -36,10 +36,10 @@ export default function List({ list, items, token }:
 
 
 
-      {items?.map((movie:any) => <div className="favMovie" key={movie.id} >
+      {items?.map((movie:any) => <div className="favMovie listItem" key={movie.id} >
         <Movie movie={movie} width={10}/>
         
-        <div className="max-w-md mr-2 flex flex-column description">
+        <div>
           <p>{movie.overview}</p>
           <h5 className='text-center'>{movie.vote_average}/10</h5>
           <Button  onClick={() => { removeFromList(list.id, movie.id, token); router.refresh() }}>Delete?</Button>

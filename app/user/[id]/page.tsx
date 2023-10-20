@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     const filtered = results.filter((item:any)=>item.backdrop_path !== undefined)
     const sorted = filtered.sort((a:any,b:any)=> b.vote_average -  a.vote_average)
 
-    return(<>
+    return(<main>
      <div className='text-center m-2'>
 <User data={accountDetails} faves={sorted}/> 
 
@@ -34,5 +34,5 @@ export default async function Page({ params }: { params: { id: string } }) {
   <MovieCarousel movies={results}/>
   </div>
    
-    </>)
+    </main>)
 }

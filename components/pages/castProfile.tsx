@@ -69,9 +69,8 @@ export default function CastProfile({ data, cast, crew }: {
 
                     cast.map((movie: any) =>
                         <Carousel.Item key={cast.indexOf(movie)}>
-                            <div className="selectedCastMovie" style={{
+                            <div className="selectedMovie" style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
-                                height: `500px`
                             }}>
                                 <div className="castInfoBackground">
                                     <h1>{data.name}</h1>
@@ -85,7 +84,7 @@ export default function CastProfile({ data, cast, crew }: {
                         <Carousel.Item key={crew.indexOf(movie)}>
                             <div className="selectedCastMovie" style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
-                                height: `500px`
+                               
                             }}>
                                 <div className="castInfoBackground">
                                     <h1>{data.name}</h1>
@@ -101,23 +100,22 @@ export default function CastProfile({ data, cast, crew }: {
 
 
 
-            <div className=" flex flex-column text-center place-content-center m-5 p-5">
+            <div className=" flex flex-column text-center place-content-center m-1">
                 <h1>About {data.name}</h1>
                 <p>
                     {data.profile_path &&
 
-                        <Image className='portrait float-left' src={imgLink + data.profile_path} height={100} width={100} alt={data.name} />
+                        <Image className='portrait float-left' src={imgLink + data.profile_path} height={150} width={100} alt={data.name} />
 
                     }     {data.biography}</p>
 
-            </div>
 
 
             {castMovies &&
-                <div>
+                <main>
                     <h1>Cast</h1>
 
-                    <div className=' flex flex-row flex-wrap '>
+                    <div className=' flex flex-row flex-wrap place-content-center '>
                         {castMovies.map((item: any) =>
                             <div key={cast.indexOf(item)} className=' p-1 m-1 flex flex-column justify-center content-center'>
 
@@ -125,14 +123,14 @@ export default function CastProfile({ data, cast, crew }: {
 
                             </div>
                         )
-                        }</div></div>}
+                        }</div></main>}
 
 
             {crewMovies &&
-                <div>
+                <main>
                     <h1>Crew</h1>
 
-                    <div className=' flex flex-row flex-wrap '>
+                    <div className=' flex flex-row flex-wrap  place-content-center '>
                         {crewMovies.map((item: any) =>
                             <div key={crew.indexOf(item)} className=' p-1 m-1 flex flex-column justify-center content-center'>
 
@@ -140,9 +138,11 @@ export default function CastProfile({ data, cast, crew }: {
 
                             </div>
                         )
-                        }</div></div>}
+                        }</div></main>}
 
+</div>
 
         </div>
+        
     )
 }

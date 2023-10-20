@@ -20,7 +20,7 @@ export default async function Page() {
     
 
     return (
-        <div className='flex flex-column justify-center items-center space-y-5 '>
+        <main className='flex flex-column justify-center items-center space-y-5 '>
             <h1>Hi {name}!</h1>
             <h2>Your Lists:</h2>
             <List data={lists} account={true} />
@@ -33,7 +33,7 @@ export default async function Page() {
             <Favorites data={results} user={id} />
 
             <h1><Link href={`/user/${id}`}>View your profile</Link></h1>
-        </div>
+        </main>
 
     )
 }else{

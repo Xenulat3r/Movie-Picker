@@ -26,7 +26,7 @@ export default async function Home({ params }: { params: { movie: string } }) {
 
 
   return(
-    <div>
+    <main>
 <MovieInfo  
 data={data} 
 favorite={favorite} 
@@ -42,6 +42,6 @@ trailerId={trailerId}
          <h1>Similar</h1>
         <MovieCarousel movies={similar.results}/> 
  
-    </div>
+    </main>
   )
 }

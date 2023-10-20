@@ -13,9 +13,9 @@ export default function PublicList({ list }: {
 
         <h1>{list.name}</h1>
         <ul>
-            {list.items.map((item:any) => <li key={item.id} className='m-2 flex flex-row'>
+            {list.items.map((item:any) => <li key={item.id} className='favMovie listItem'>
                 <Movie movie={item} width={8} />
-                <div className='m-2 p-2'>
+                <div >
 
                     <p>{item.overview}</p>
                     <p>Average Rating: {item.vote_average}/10</p>

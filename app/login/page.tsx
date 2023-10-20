@@ -9,8 +9,8 @@ export default async function Page() {
     if(token){
         redirect(link)
     }
-    return (<>
+    return (<main>
 
-        {token}
-    </>)
+  
+    </main>)
 }

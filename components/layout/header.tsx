@@ -12,9 +12,9 @@ import NavBar from './nav';
 export default async function Header({loggedIn,session}:{loggedIn:boolean,session:string}){
 
 
-    return(<>
+    return(<header>
 <LoginButton loggedIn={loggedIn} session={session}  />
 <NavBar loggedIn={loggedIn}  />
 
-    </>)
+    </header>)
 }

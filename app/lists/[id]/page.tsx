@@ -5,8 +5,8 @@ export default async function PublicLists({ params }: { params: { id: string } }
     const list = await getDetails(id)
 
     return (
-        <>
+        <main>
 <PublicList list={list}/>
-        </>
+        </main>
     )
 }

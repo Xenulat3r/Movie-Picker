@@ -13,7 +13,7 @@ const imgLink = `https://image.tmdb.org/t/p/original/`
 const router = useRouter();
 
     return (
-        <div className='flex flex-row flex-wrap m-5'>
+        <div className='listItem'>
             {data.map((movie:any)=><div  key={movie.id} className='m-1' >
                 <Card style={{ width: '8rem' }} >
      <Link href={`/movies/${movie.id}`} > <Card.Img variant="top" src={imgLink + movie.poster_path}  /></Link>

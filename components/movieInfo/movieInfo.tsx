@@ -47,7 +47,7 @@ export default function MovieInfo({data,user,favorite,lists,session,providers,tr
     <div className="d-flex justify-content-around">      
     <Card style={{ width: '100%' }}>
       <Card.Body>
-      <div className="selectedCastMovie" style={{
+      <div className="selectedMovie" style={{
          backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`
           }}>
 <div className="movieInfoBackground"> 

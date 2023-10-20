@@ -15,7 +15,7 @@ export default async  function Page() {
     
     if(session !== ""){
   return (
-    <>
+    <main>
     <Dashboard data={data} />
 {faves.map((item:any)=>
 <div key={item.id}>
@@ -23,7 +23,7 @@ export default async  function Page() {
   </div>
 )
   }
-    </>
+    </main>
 
   )}else{
     redirect("/")

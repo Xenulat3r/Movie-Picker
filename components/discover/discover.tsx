@@ -91,6 +91,7 @@ export default function Discover({ info }: {
                 <Card.Body>
                     <Tabs
                         className="mb-3"
+                        variant="pills"
                         fill
                     >
                         <Tab eventKey="Rating" title="Rating">

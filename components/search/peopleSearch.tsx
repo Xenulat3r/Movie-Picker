@@ -26,9 +26,9 @@ useEffect(()=>{
     }
     },[data])
     return(
-     <div>
+     <main>
 
-<InputGroup className="mb-3" >
+<InputGroup className="mb-3 mt-3" >
 
 <Form.Control
   autoFocus
@@ -41,6 +41,6 @@ useEffect(()=>{
 />
 </InputGroup>
  <PeopleResults data={peopleResults}/>
-     </div>
+     </main>
     )
 }
