@@ -20,7 +20,9 @@ export async function middleware(req: NextRequest, res: NextResponse) {
 
     const { session_id } = await request.json()
     const oneDay = 24 * 60 * 60 * 1000
-    const response = NextResponse.next()
+    const url = req.nextUrl.clone()
+    url.pathname = '/'
+    const response = NextResponse.redirect(url)
     response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none" ,secure: true})
     if (session_id) {
       return response
@@ -28,7 +30,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
       const request = await fetch('https://api.themoviedb.org/3/authentication/session/new', options)
         .then(res => res.json())
         .then(res => console.log(res))
-    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none",secure: true })
+    response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none",secure: true})
 
       return response
     }
