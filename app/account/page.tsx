@@ -11,7 +11,7 @@ import Favorites from '@/components/account/favorites'
 
 export default async function Page() {
     const cookieStore = cookies()
-    const session = cookieStore.get('session')?.value || ""
+    const session = cookieStore.get('movieSession')?.value || ""
     const { name, id } = await getUserAccount(session)
     const { results } = await getFavorites(id)
     const lists = await getLists(id)

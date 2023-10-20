@@ -10,7 +10,7 @@ export default async function Page({params}:{params:{id:string}}){
     const list = await getDetails(id)
     const {items} = list
     const cookieStore = cookies()
-    const token = cookieStore.get('session')?.value || ""
+    const token = cookieStore.get('movieSession')?.value || ""
     
     if(token !== ""){return(
 <ListEdit list={list} items={items} token={token}/>

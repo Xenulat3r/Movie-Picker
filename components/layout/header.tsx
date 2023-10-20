@@ -9,14 +9,12 @@ import { cookies } from 'next/headers'
 import NavBar from './nav';
 
 
-export default async function Header(){
-const cookieStore = cookies()
-const session = cookieStore.get('session')?.value || ""
-const loggedIn = session ? true : false;
+export default async function Header({loggedIn,session}:{loggedIn:boolean,session:string}){
+
 
     return(<>
-
-<NavBar loggedIn={loggedIn} />
+<LoginButton loggedIn={loggedIn} session={session}  />
+<NavBar loggedIn={loggedIn}  />
 
     </>)
 }

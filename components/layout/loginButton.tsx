@@ -5,10 +5,9 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { getUserAccount, getUserInfo } from '@/utils/getUser';
 import { cookies } from 'next/headers'
-export default async function LoginButton() {
-  const cookieStore = cookies()
-const session = cookieStore.get('session')?.value || ""
-const loggedIn = session !== "" ? true : false;
+export default async function LoginButton({loggedIn,session}:{loggedIn:boolean,session:string}) {
+
+
   if (loggedIn) {
     const { account_id } = await getUserAccount(session)
     const accountDetails = await getUserInfo(account_id)
