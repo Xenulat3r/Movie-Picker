@@ -11,7 +11,6 @@ export default async  function Page() {
     const account_id = await data.id
     const faves = await getFaves(account_id)
 
-console.log(session)
 
   return (
     <>
