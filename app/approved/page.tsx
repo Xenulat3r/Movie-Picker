@@ -1,10 +1,17 @@
-import { redirect } from 'next/navigation'
+'use client'
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation'
+export default function Page() {
+  const router = useRouter()
+useEffect(()=>{
+  setTimeout(() => {
+  router.push('/')
+}, 1500);
+})
 
-export default async function Page() {
- setTimeout(() => {
-  redirect("/")
- }, 5000); 
-return(
-  <h1>Logging in...</h1>
-)
+  
+  
+  return (
+<h1>Logging In...</h1>
+  )
 }
