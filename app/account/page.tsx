@@ -1,6 +1,6 @@
 import { getFavorites, getLists, getUserAccount, } from '@/utils/getUser'
 import { cookies } from 'next/headers'
-
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import List from '@/components/lists/list'
 import MakeList from '@/components/account/makeList'
@@ -15,6 +15,9 @@ export default async function Page() {
     const { name, id } = await getUserAccount(session)
     const { results } = await getFavorites(id)
     const lists = await getLists(id)
+    if(session !== ""){
+
+    
 
     return (
         <div className='flex flex-column justify-center items-center space-y-5 '>
@@ -33,5 +36,7 @@ export default async function Page() {
         </div>
 
     )
-
+}else{
+    redirect('/')
 } 
+}

@@ -10,7 +10,6 @@ export default async function Home() {
  const popular = await getPopularMovies()
  const upcoming = await getUpcoming()
  const data = {popular,nowPlaying,upcoming}
- 
   return(
     <div>
       

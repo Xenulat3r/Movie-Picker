@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getToken } from './utils/getUser'
+import { cookies } from 'next/headers'
 export async function middleware(req: NextRequest, res: NextResponse) {
   const AUTH: string = process.env.NEXT_PUBLIC_AUTH !== undefined ? process.env.NEXT_PUBLIC_AUTH : ""
-  const myURL = process.env.NEXT_PUBLIC_URL
+  const myURL = process.env.NEXT_PUBLIC_URL || "/"
   if (req.nextUrl.pathname.startsWith('/approved')) {
     const token = req.nextUrl.searchParams.get("request_token")
     const request_token: string = token !== null ? token : ""
@@ -20,23 +21,16 @@ export async function middleware(req: NextRequest, res: NextResponse) {
 
     const { session_id } = await request.json()
     const oneDay = 24 * 60 * 60 * 1000
-    const url = req.nextUrl.clone()
-    url.pathname = '/'
-    const response = NextResponse.redirect(url)
+    const response = NextResponse.next()
     response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none" ,secure: true})
     if (session_id) {
       return response
     } else {
-      const request = await fetch('https://api.themoviedb.org/3/authentication/session/new', options)
-        .then(res => res.json())
-        .then(res => console.log(res))
     response.cookies.set("session", session_id, { expires: Date.now() + oneDay, sameSite:"none",secure: true})
-
       return response
     }
 
   }
-
 
   if (req.nextUrl.pathname.startsWith('/logout')) {
     const response = NextResponse.next()

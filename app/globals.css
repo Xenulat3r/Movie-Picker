@@ -296,7 +296,10 @@ li{
 
   padding:2rem;
 }
-
+button{
+  border:0;
+  background:transparent;
+}
 
 @media (max-width:1000px) {
   .filters{
